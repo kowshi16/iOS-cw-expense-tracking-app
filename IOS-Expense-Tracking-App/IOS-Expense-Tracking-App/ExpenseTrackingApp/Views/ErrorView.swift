@@ -2,7 +2,7 @@
 //  ErrorView.swift
 //  IOS-Expense-Tracking-App
 //
-//  Created by air on 16/09/2023.
+//  Created by Kowshi on 16/09/2023.
 //
 
 import SwiftUI

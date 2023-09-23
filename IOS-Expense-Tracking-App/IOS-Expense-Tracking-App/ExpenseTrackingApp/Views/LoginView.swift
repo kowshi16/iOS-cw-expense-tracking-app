@@ -2,7 +2,7 @@
 //  LoginView.swift
 //  IOS-Expense-Tracking-App
 //
-//  Created by air on 10/09/2023.
+//  Created by Kowshi on 10/09/2023.
 //
 
 import SwiftUI
@@ -116,7 +116,6 @@ struct LoginView: View {
                     self.alert.toggle()
                     return
                 }
-                
                 print("success")
                 UserDefaults.standard.set(true, forKey: "status")
                 NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)

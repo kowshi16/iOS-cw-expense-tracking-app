@@ -2,7 +2,7 @@
 //  HomeView.swift
 //  IOS-Expense-Tracking-App
 //
-//  Created by air on 10/09/2023.
+//  Created by Kowshi on 10/09/2023.
 //
 
 import SwiftUI
@@ -13,20 +13,11 @@ struct HomeView: View {
     @State var status = UserDefaults.standard.value(forKey: "status") as? Bool ?? false
     
     var body: some View {
-//        NavigationView{
-//           ZStack {
-//               NavigationLink(destination: SignUpView(show: self.$show), isActive: self.$show){
-//                   Text("")
-//               }
-//               .hidden()
-//
-//               LoginView(show: self.$show)
-//            }
-//        }
         NavigationView{
             VStack{
                 if self.status{
-                    Homescreen()
+                    //Homescreen()
+                    DashboardBaseView()
                 }
                 else{
                     ZStack{
@@ -34,7 +25,7 @@ struct HomeView: View {
                                            Text("")
                                        }
                                        .hidden()
-                        
+                       
                                        LoginView(show: self.$show)
                     }
                 }

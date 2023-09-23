@@ -2,7 +2,7 @@
 //  SignUp.swift
 //  IOS-Expense-Tracking-App
 //
-//  Created by air on 10/09/2023.
+//  Created by Kowshi on 10/09/2023.
 //
 
 import SwiftUI
@@ -11,6 +11,7 @@ import FirebaseAuth
 
 struct SignUpView: View {
     @State var color = Color.black.opacity(0.7)
+    @State var fullName = ""
     @State var email = ""
     @State var password = ""
     @State var confirmPassword = ""
