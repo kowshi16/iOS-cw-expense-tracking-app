@@ -68,7 +68,7 @@ struct DashboardBaseView: View {
             .padding(.top, -10)
             .frame(maxWidth: .infinity)
             .background(
-                Color("BG")
+                Color.white
                     .ignoresSafeArea()
             )
         }
@@ -105,6 +105,6 @@ struct BGModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color("BG").ignoresSafeArea())
+            .background(Color.white.ignoresSafeArea())
     }
 }

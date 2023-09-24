@@ -14,48 +14,62 @@ struct SettingsView: View {
     @State private var userEmail: String?
     
     var body: some View {
-        VStack{
-            NavigationView{
-                Form {
-                    HStack {
-                        Image(systemName: "person.crop.circle").resizable()
-                            .frame(width: 50, height: 50).foregroundColor(.blue)
-                        VStack(alignment: .leading){
-                            if let email = userEmail {
-                                Text(email).font(.title2)
-                            }
-                        }.onAppear {
-                            fetchUserEmail()
-                        }
+        ScrollView(.vertical, showsIndicators: false) {
+            VStack(spacing: 18) {
+                HStack {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Settings")
+                            .font(.title.bold())
                     }
-                    
-                    Section {
-                        HStack{
-                            ZStack{
-                                RoundedRectangle(cornerRadius: 4).fill(.red)
-                                    .frame(width: 28, height: 28)
-                                Image(systemName:"person.crop.circle.badge.xmark").foregroundColor(.white)
-                            }
-                            VStack(alignment: .leading){
-                                Text("Logout")
-                            }
-                        }
-                    }.onTapGesture {
-                        try! Auth.auth().signOut()
-                        UserDefaults.standard.set(false, forKey: "status")
-                        NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
-                    }
+                    Spacer(minLength: 10)
                 }
-                .navigationTitle("Settings")
+            }.padding()
+            
+            NavigationView {
+                VStack {
+                    Form {
+                        HStack {
+                            Image(systemName: "person.crop.circle").resizable()
+                                .frame(width: 50, height: 50).foregroundColor(.blue)
+                            VStack(alignment: .leading){
+                                if let email = userEmail {
+                                    Text(email).font(.title2)
+                                }
+                            }.onAppear {
+                                fetchUserEmail()
+                            }
+                        }
+
+                        Section {
+                            HStack{
+                                ZStack{
+                                    RoundedRectangle(cornerRadius: 4).fill(.red)
+                                        .frame(width: 28, height: 28)
+                                    Image(systemName:"person.crop.circle.badge.xmark").foregroundColor(.white)
+                                }
+                                VStack(alignment: .leading){
+                                    Text("Logout")
+                                }
+                            }
+                        }.onTapGesture {
+                            try! Auth.auth().signOut()
+                            UserDefaults.standard.set(false, forKey: "status")
+                            NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
+                        }
+                    }
+                    .background(Color.white)
+                }
+
+
             }
         }
     }
     
     private func fetchUserEmail() {
-            if let user = Auth.auth().currentUser {
-                self.userEmail = user.email
-            }
+        if let user = Auth.auth().currentUser {
+            self.userEmail = user.email
         }
+    }
 }
 
 

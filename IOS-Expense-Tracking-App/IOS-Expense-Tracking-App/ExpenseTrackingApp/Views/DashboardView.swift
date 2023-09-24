@@ -48,7 +48,7 @@ struct DashboardView: View {
                             )
                             .offset(x: -2)
                             .padding(15)
-                            .background(Color.white)
+                            .background(Color("BG"))
                             .clipShape(Circle())
                     } // NOTIFICATION END
                 } // TITLE END
@@ -60,7 +60,7 @@ struct DashboardView: View {
                     OrderProgress(title: "Order Completed", color: Color("roundColor"), image: "clock.badge.checkmark", progress: 72)
                 } // USER VIEW END
                 .padding()
-                .background(Color.white)
+                .background(Color("BG"))
                 .cornerRadius(18)
                 .padding(.bottom, -25)
                 
@@ -119,7 +119,7 @@ struct DashboardView: View {
                     .padding(.top, 10)
                 } // END TOP SELL
                 .padding()
-                .background(Color.white)
+                .background(Color("BG"))
                 .cornerRadius(18)
                 
             }

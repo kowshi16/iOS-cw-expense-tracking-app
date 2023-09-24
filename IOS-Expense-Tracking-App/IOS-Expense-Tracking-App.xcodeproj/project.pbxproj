@@ -28,6 +28,10 @@
 		45BA87A92ABEF30500E4D225 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BA87A82ABEF30500E4D225 /* SettingsView.swift */; };
 		45BA87AE2ABF772900E4D225 /* ExpensesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BA87AD2ABF772900E4D225 /* ExpensesView.swift */; };
 		45BA87B02ABF77AF00E4D225 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BA87AF2ABF77AF00E4D225 /* CategoryView.swift */; };
+		45BA87B22AC0599000E4D225 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BA87B12AC0599000E4D225 /* CategoryModel.swift */; };
+		45BA87B42AC0718000E4D225 /* CategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BA87B32AC0718000E4D225 /* CategoryViewModel.swift */; };
+		45BA87B62AC0A3C500E4D225 /* ExpenseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BA87B52AC0A3C500E4D225 /* ExpenseModel.swift */; };
+		45BA87B82AC0B71600E4D225 /* ExpenseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BA87B72AC0B71600E4D225 /* ExpenseViewModel.swift */; };
 		45DEA4CD2AB7E4DB00AEB8C4 /* Sales.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DEA4CC2AB7E4DB00AEB8C4 /* Sales.swift */; };
 		45DEA4CF2AB7E53100AEB8C4 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45DEA4CE2AB7E53100AEB8C4 /* DashboardView.swift */; };
 /* End PBXBuildFile section */
@@ -51,6 +55,10 @@
 		45BA87A82ABEF30500E4D225 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		45BA87AD2ABF772900E4D225 /* ExpensesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpensesView.swift; sourceTree = "<group>"; };
 		45BA87AF2ABF77AF00E4D225 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+		45BA87B12AC0599000E4D225 /* CategoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
+		45BA87B32AC0718000E4D225 /* CategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewModel.swift; sourceTree = "<group>"; };
+		45BA87B52AC0A3C500E4D225 /* ExpenseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseModel.swift; sourceTree = "<group>"; };
+		45BA87B72AC0B71600E4D225 /* ExpenseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseViewModel.swift; sourceTree = "<group>"; };
 		45DEA4CC2AB7E4DB00AEB8C4 /* Sales.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sales.swift; sourceTree = "<group>"; };
 		45DEA4CE2AB7E53100AEB8C4 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -150,6 +158,8 @@
 		45BA87AA2ABF187500E4D225 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				45BA87B32AC0718000E4D225 /* CategoryViewModel.swift */,
+				45BA87B72AC0B71600E4D225 /* ExpenseViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -157,7 +167,9 @@
 		45DEA4CB2AB7E49C00AEB8C4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				45BA87B12AC0599000E4D225 /* CategoryModel.swift */,
 				45DEA4CC2AB7E4DB00AEB8C4 /* Sales.swift */,
+				45BA87B52AC0A3C500E4D225 /* ExpenseModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -245,18 +257,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				452B43E82AADC96700CFE5EC /* HomeView.swift in Sources */,
+				45BA87B82AC0B71600E4D225 /* ExpenseViewModel.swift in Sources */,
 				457B9B002AB5CB1F00762105 /* ErrorView.swift in Sources */,
 				452B43D92AADBDCE00CFE5EC /* ContentView.swift in Sources */,
 				45BA87A72ABEE55D00E4D225 /* GraphView.swift in Sources */,
 				452B43EC2AADC9D400CFE5EC /* LoginView.swift in Sources */,
 				45DEA4CF2AB7E53100AEB8C4 /* DashboardView.swift in Sources */,
 				452B43D72AADBDCE00CFE5EC /* IOS_Expense_Tracking_AppApp.swift in Sources */,
+				45BA87B22AC0599000E4D225 /* CategoryModel.swift in Sources */,
 				452B43EE2AADFDDC00CFE5EC /* SignUpView.swift in Sources */,
 				45BA87B02ABF77AF00E4D225 /* CategoryView.swift in Sources */,
 				45BA87A52ABEE51C00E4D225 /* DashboardBaseView.swift in Sources */,
 				45BA87A92ABEF30500E4D225 /* SettingsView.swift in Sources */,
+				45BA87B42AC0718000E4D225 /* CategoryViewModel.swift in Sources */,
 				45DEA4CD2AB7E4DB00AEB8C4 /* Sales.swift in Sources */,
 				457B9B132AB62AC400762105 /* Homescreen.swift in Sources */,
+				45BA87B62AC0A3C500E4D225 /* ExpenseModel.swift in Sources */,
 				45BA87AE2ABF772900E4D225 /* ExpensesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
