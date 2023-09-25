@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 class CategoryViewModel: ObservableObject {
     @Published var categories = [Category]()
@@ -20,12 +21,14 @@ class CategoryViewModel: ObservableObject {
                 return
             }
             
-            self.categories = documents.map{ (queryDocumentSnapshot) -> Category in
-                let data = queryDocumentSnapshot.data()
+            self.categories = documents.compactMap{ (queryDocumentSnapshot) -> Category? in
+                return try? queryDocumentSnapshot.data(as: Category.self)
                 
-                let categoryTitle = data["categoryTitle"] as? String ?? ""
-                
-                return Category(categoryTitle: categoryTitle)
+//                let data = queryDocumentSnapshot.data()
+//
+//                let categoryTitle = data["categoryTitle"] as? String ?? ""
+//
+//                return Category(categoryTitle: categoryTitle)
             }
         }
     }

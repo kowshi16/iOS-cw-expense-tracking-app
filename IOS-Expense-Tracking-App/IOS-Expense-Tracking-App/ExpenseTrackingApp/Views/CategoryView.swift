@@ -11,6 +11,8 @@ struct CategoryView: View {
     
     @ObservedObject private var viewModel = CategoryViewModel()
     
+    @State private var presentAddNewCategoryScreen = false
+    
     var body: some View {
 //        ScrollView(.vertical, showsIndicators: false) {
 //            VStack(spacing: 18) {
@@ -48,12 +50,15 @@ struct CategoryView: View {
             .toolbar{
                 ToolbarItem(placement: .navigationBarTrailing){
                     Button {
-                        
+                        presentAddNewCategoryScreen.toggle()
                     } label: {
                         Image(systemName: "plus.circle.fill")
                             .font(.title3)
                     }
                 }
+            }
+            .sheet(isPresented: $presentAddNewCategoryScreen) {
+                CategoryEditView()
             }
             .onAppear(){
                 self.viewModel.fetchData()

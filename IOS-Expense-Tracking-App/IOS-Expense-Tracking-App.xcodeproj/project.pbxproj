@@ -23,6 +23,8 @@
 		457B9B0E2AB6059300762105 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 457B9B0D2AB6059300762105 /* FirebaseStorage */; };
 		457B9B112AB625BB00762105 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 457B9B102AB625BB00762105 /* FirebaseAuth */; };
 		457B9B132AB62AC400762105 /* Homescreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457B9B122AB62AC400762105 /* Homescreen.swift */; };
+		4596A2C22AC2230C005A24F2 /* CategoryAddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4596A2C12AC2230C005A24F2 /* CategoryAddViewModel.swift */; };
+		4596A2C42AC22450005A24F2 /* CategoryEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4596A2C32AC22450005A24F2 /* CategoryEditView.swift */; };
 		45BA87A52ABEE51C00E4D225 /* DashboardBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BA87A42ABEE51C00E4D225 /* DashboardBaseView.swift */; };
 		45BA87A72ABEE55D00E4D225 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BA87A62ABEE55D00E4D225 /* GraphView.swift */; };
 		45BA87A92ABEF30500E4D225 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BA87A82ABEF30500E4D225 /* SettingsView.swift */; };
@@ -50,6 +52,8 @@
 		457B9B012AB5F6B500762105 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		457B9B032AB5F6D000762105 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		457B9B122AB62AC400762105 /* Homescreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Homescreen.swift; sourceTree = "<group>"; };
+		4596A2C12AC2230C005A24F2 /* CategoryAddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryAddViewModel.swift; sourceTree = "<group>"; };
+		4596A2C32AC22450005A24F2 /* CategoryEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryEditView.swift; sourceTree = "<group>"; };
 		45BA87A42ABEE51C00E4D225 /* DashboardBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardBaseView.swift; sourceTree = "<group>"; };
 		45BA87A62ABEE55D00E4D225 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		45BA87A82ABEF30500E4D225 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -144,6 +148,7 @@
 				45BA87A82ABEF30500E4D225 /* SettingsView.swift */,
 				45BA87AD2ABF772900E4D225 /* ExpensesView.swift */,
 				45BA87AF2ABF77AF00E4D225 /* CategoryView.swift */,
+				4596A2C32AC22450005A24F2 /* CategoryEditView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -158,6 +163,7 @@
 		45BA87AA2ABF187500E4D225 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				4596A2C12AC2230C005A24F2 /* CategoryAddViewModel.swift */,
 				45BA87B32AC0718000E4D225 /* CategoryViewModel.swift */,
 				45BA87B72AC0B71600E4D225 /* ExpenseViewModel.swift */,
 			);
@@ -268,12 +274,14 @@
 				452B43EE2AADFDDC00CFE5EC /* SignUpView.swift in Sources */,
 				45BA87B02ABF77AF00E4D225 /* CategoryView.swift in Sources */,
 				45BA87A52ABEE51C00E4D225 /* DashboardBaseView.swift in Sources */,
+				4596A2C42AC22450005A24F2 /* CategoryEditView.swift in Sources */,
 				45BA87A92ABEF30500E4D225 /* SettingsView.swift in Sources */,
 				45BA87B42AC0718000E4D225 /* CategoryViewModel.swift in Sources */,
 				45DEA4CD2AB7E4DB00AEB8C4 /* Sales.swift in Sources */,
 				457B9B132AB62AC400762105 /* Homescreen.swift in Sources */,
 				45BA87B62AC0A3C500E4D225 /* ExpenseModel.swift in Sources */,
 				45BA87AE2ABF772900E4D225 /* ExpensesView.swift in Sources */,
+				4596A2C22AC2230C005A24F2 /* CategoryAddViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

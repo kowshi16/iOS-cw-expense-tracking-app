@@ -6,8 +6,13 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
 
-struct Category: Identifiable {
-    var id: String = UUID().uuidString
+struct Category: Identifiable, Codable {
+    @DocumentID var id: String? = UUID().uuidString
     var categoryTitle: String
+    
+    enum CodingKeys: String, CodingKey {
+        case categoryTitle
+    }
 }
