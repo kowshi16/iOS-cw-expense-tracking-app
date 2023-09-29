@@ -11,51 +11,10 @@ struct ExpensesView: View {
     
     @ObservedObject private var viewModel = ExpenseViewModel()
     @StateObject var expenseData = ExpenseViewModel()
+    @State private var addExpense: Bool = false
+    @StateObject var categoryData = CategoryViewModel()
     
     var body: some View {
-        //        ScrollView(.vertical, showsIndicators: false) {
-        //            VStack(spacing: 18) {
-        //                HStack {
-        //                    VStack(alignment: .leading, spacing: 8) {
-        //                        Text("Expenses")
-        //                            .font(.title.bold())
-        //                    }
-        //                    Spacer(minLength: 10)
-        //                }
-        //            }.padding()
-        //
-        //        }
-        
-//        NavigationStack {
-//            List(viewModel.expenses) { expense in
-//                VStack(alignment: .leading) {
-//                    Text(expense.expenseTitle)
-//                        .font(.title)
-//                    Text(expense.description)
-//                        .font(.title2)
-//                }
-//            }
-//            .navigationTitle("Expenses")
-//            .overlay {
-//                if viewModel.expenses.isEmpty {
-//                    Label("No expenses", systemImage: "tray.fill")
-//                }
-//            }
-//            .toolbar{
-//                ToolbarItem(placement: .navigationBarTrailing){
-//                    Button {
-//
-//                    } label: {
-//                        Image(systemName: "plus.circle.fill")
-//                            .font(.title3)
-//                    }
-//                }
-//            }
-//            .onAppear(){
-//                self.viewModel.fetchData()
-//            }
-//        }
-        
         NavigationView {
             ScrollView(.vertical, showsIndicators: false, content: {
                 
@@ -68,7 +27,7 @@ struct ExpensesView: View {
                         Spacer(minLength: 10)
                         
                         Button {
-                            
+                            addExpense.toggle()
                         } label: {
                             Image(systemName: "plus.circle.fill")
                                 .font(.title3)
@@ -96,7 +55,32 @@ struct ExpensesView: View {
                 .padding()
             })
         }
-        
+        .sheet(isPresented: $addExpense) {
+            AddExpenseView()
+                .interactiveDismissDisabled()
+        }
+    }
+    
+    // Creating Grouped Transactions (Group By Date)
+    func createGroupedTransactions(_ transactions: [Expense]) {
+        Task.detached(priority: .high) {
+            let groupedDict = Dictionary(grouping: transactions) { expense in
+                let dateComponents = Calendar.current.dateComponents([.day, .month, .year], from: expense.transDate)
+                
+                return dateComponents
+            }
+            
+            // Sorting Dictionary in Descending Order
+            let sortedDict = groupedDict.sorted {
+                let calendar = Calendar.current
+                let date1 = calendar.date(from: $0.key) ?? .init()
+                let date2 = calendar.date(from: $1.key) ?? .init()
+                
+                return calendar.compare(date1, to: date2, toGranularity: .day) == .orderedDescending
+            }
+            
+            // Adding to the 
+        }
     }
 }
 

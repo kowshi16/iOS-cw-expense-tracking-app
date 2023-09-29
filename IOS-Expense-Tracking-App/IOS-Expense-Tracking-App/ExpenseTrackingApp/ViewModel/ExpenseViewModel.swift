@@ -29,26 +29,5 @@ class ExpenseViewModel: ObservableObject {
                 
             })
     }
-    
-    private var db = Firestore.firestore()
-    
-    func fetchData() {
-        db.collection("expense").addSnapshotListener { (querySnapshot, error) in
-            guard let documents = querySnapshot?.documents else {
-                print("No documents")
-                return
-            }
-            
-            self.expenses = documents.map{ (queryDocumentSnapshot) -> Expense in
-                let data = queryDocumentSnapshot.data()
-                
-                let expenseTitle = data["expenseTitle"] as? String ?? ""
-                let description = data["description"] as? String ?? ""
-                let category = data["category"] as? Category ?? Category(_id: "", categoryTitle: "Default Category")
-                let expenseDate = data["expenseDate"] as? Date ?? Date()
-                
-                return Expense(expenseTitle: expenseTitle, description: description, category: category , expenseDate: expenseDate)
-            }
-        }
-    }
+
 }

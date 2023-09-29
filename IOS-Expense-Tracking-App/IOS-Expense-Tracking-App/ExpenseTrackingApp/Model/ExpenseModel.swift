@@ -7,10 +7,13 @@
 
 import Foundation
 
-struct Expense: Identifiable {
-    var id: String = UUID().uuidString
-    var expenseTitle: String
-    var description: String
-    var category: Category
-    var expenseDate: Date
+struct Expense: Codable, Hashable {
+    let _id: String
+    let expenseTitle: String
+    let description: String
+    let category: Category
+    let type: String
+    let transDate: Date
+    let amount: Double
+    let location: String
 }

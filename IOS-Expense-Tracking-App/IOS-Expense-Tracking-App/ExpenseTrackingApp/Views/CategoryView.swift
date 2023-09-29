@@ -17,6 +17,8 @@ struct CategoryView: View {
     @State private var deleteRequest: Bool = false
     @State private var isSwipeGestureActive = false
     
+    @State private var categoryTitle = ""
+    
     var body: some View {
         
         NavigationView {
@@ -55,12 +57,15 @@ struct CategoryView: View {
                             } else {
                                 ForEach(categoryData.categories, id: \.self) { category in
                                     HStack {
-                                        Image(systemName: "building.columns").foregroundColor(.blue)
-                                        Text(category.categoryTitle).font(.headline)
+                                        Image(systemName: "building.columns")
+                                            .foregroundColor(.blue)
+                                        Text(category.categoryTitle)
+                                            .font(.headline)
                                     }
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .padding()
-                                    .background(Color.gray.opacity(0.2), in: RoundedRectangle(cornerRadius: 10, style: .continuous))
+                                    .background(Color.gray.opacity(0.2))
+                                    .cornerRadius(10)
                                     .padding(.horizontal, 4)
                                 }
                             }
@@ -72,6 +77,39 @@ struct CategoryView: View {
                     }
                 }.padding()
             })
+        }
+        .sheet(isPresented: $addCategory) {
+            categoryTitle = ""
+        } content: {
+            NavigationStack {
+                List {
+                    Section("Category Name") {
+                        TextField("Enter Category Name", text: $categoryTitle)
+                    }
+                }
+                .navigationTitle("Category Name")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Button("Cancel") {
+                            addCategory = false
+                        }
+                        .tint(.red)
+                    }
+                    
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button("Add") {
+                            //let category = Category(categoryTitle: categoryTitle)
+                            categoryTitle = ""
+                            addCategory = false
+                        }
+                        .disabled(categoryTitle.isEmpty)
+                    }
+                }
+            }
+            .presentationDetents([.height(180)])
+            .presentationCornerRadius(20)
+            .interactiveDismissDisabled()
         }
     }
 }
