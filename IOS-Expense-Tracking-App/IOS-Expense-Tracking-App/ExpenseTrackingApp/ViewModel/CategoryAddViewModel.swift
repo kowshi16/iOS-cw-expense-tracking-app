@@ -18,7 +18,7 @@ class CategoryAddViewModel: ObservableObject {
     
     private var cancellables = Set<AnyCancellable>()
     
-    init(category: Category = Category(categoryTitle: "")) {
+    init(category: Category = Category(_id: "", categoryTitle: "")) {
         self.category = category
         
         self.$category

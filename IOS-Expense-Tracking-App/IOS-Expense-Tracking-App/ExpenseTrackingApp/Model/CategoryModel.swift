@@ -8,11 +8,7 @@
 import Foundation
 import FirebaseFirestoreSwift
 
-struct Category: Identifiable, Codable {
-    @DocumentID var id: String? = UUID().uuidString
-    var categoryTitle: String
-    
-    enum CodingKeys: String, CodingKey {
-        case categoryTitle
-    }
+struct Category: Codable, Hashable {
+    let _id: String
+    let categoryTitle: String
 }

@@ -7,9 +7,28 @@
 
 import Foundation
 import FirebaseFirestore
+import Combine
 
 class ExpenseViewModel: ObservableObject {
     @Published var expenses = [Expense]()
+    @Published var searchQuery = ""
+    
+    var searchCancellable: AnyCancellable? = nil
+    
+    init() {
+        searchCancellable = $searchQuery
+            .removeDuplicates()
+            .debounce(for: 0.6, scheduler: RunLoop.main)
+            .sink(receiveValue: { str in
+                if str == "" {
+                    
+                }
+                else {
+                    print(str)
+                }
+                
+            })
+    }
     
     private var db = Firestore.firestore()
     
@@ -25,7 +44,7 @@ class ExpenseViewModel: ObservableObject {
                 
                 let expenseTitle = data["expenseTitle"] as? String ?? ""
                 let description = data["description"] as? String ?? ""
-                let category = data["category"] as? Category ?? Category(categoryTitle: "Default Category")
+                let category = data["category"] as? Category ?? Category(_id: "", categoryTitle: "Default Category")
                 let expenseDate = data["expenseDate"] as? Date ?? Date()
                 
                 return Expense(expenseTitle: expenseTitle, description: description, category: category , expenseDate: expenseDate)

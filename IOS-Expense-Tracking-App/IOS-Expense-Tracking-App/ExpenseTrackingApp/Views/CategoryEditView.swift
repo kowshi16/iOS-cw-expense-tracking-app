@@ -16,7 +16,7 @@ struct CategoryEditView: View {
         NavigationView {
             Form {
                 Section(header: Text("Category")) {
-                    TextField("Title", text: $viewModel.category.categoryTitle)
+//                    TextField("Title", text: $viewModel.category.categoryTitle)
                 }
             }
             .navigationBarTitle("New Category", displayMode: .inline)

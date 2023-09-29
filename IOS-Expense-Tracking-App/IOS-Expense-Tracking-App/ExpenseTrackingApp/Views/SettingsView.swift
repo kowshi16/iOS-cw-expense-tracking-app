@@ -27,7 +27,7 @@ struct SettingsView: View {
             
             NavigationView {
                 VStack {
-                    Form {
+                    List {
                         HStack {
                             Image(systemName: "person.crop.circle").resizable()
                                 .frame(width: 50, height: 50).foregroundColor(.blue)
@@ -39,7 +39,7 @@ struct SettingsView: View {
                                 fetchUserEmail()
                             }
                         }
-
+                        
                         Section {
                             HStack{
                                 ZStack{
@@ -57,10 +57,7 @@ struct SettingsView: View {
                             NotificationCenter.default.post(name: NSNotification.Name("status"), object: nil)
                         }
                     }
-                    .background(Color.white)
                 }
-
-
             }
         }
     }
