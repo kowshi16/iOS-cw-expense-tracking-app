@@ -22,7 +22,9 @@ struct AddExpenseView: View {
     
     @State private var selectedOption = 0
     @StateObject var allCategories = CategoryViewModel()
+    @StateObject var transData = ExpenseViewModel()
     @State private var selectedCategory: Category?
+    @State var transactionPayload: TransactionPayload?
     
     var body: some View {
         NavigationStack {
@@ -120,13 +122,20 @@ struct AddExpenseView: View {
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        // Your action when the button is tapped
-                        print("Button tapped")
-                    }) {
-                        Text("Add")
+                    Button("Add") {
+                        transactionPayload?.transTitle = expenseTitle
+                        transactionPayload?.description = description
+                        transactionPayload?.amount = Int(amount)
+                        transactionPayload?.transType = (selectedOption == 0 ? "Income" : "Expense")
+                        transactionPayload?.category = self.category!
+                        transactionPayload?.location = location
+                        transactionPayload?.transDate = transDate
+                        
+                        transData.addTransaction(transPayload: transactionPayload!)
+                        
+                        dismiss()
                     }
-                    .disabled(isAddButtonDisabled)
+                    //.disabled(isAddButtonDisabled)
                 }
             }
         }
@@ -135,12 +144,6 @@ struct AddExpenseView: View {
     // Disabling Add Button untill all data is entered
     var isAddButtonDisabled: Bool {
         return expenseTitle.isEmpty || description.isEmpty || amount == .zero
-    }
-    
-    // Add Transaction
-    func addTransaction() {
-        //        let transaction = Expense(_id: <#T##String#>, expenseTitle: expenseTitle, description: description, category: <#T##Category#>, type: <#T##String#>, transDate: transDate, amount: amount, location: <#T##String#>)
-        dismiss()
     }
     
     // Decimal Formatter

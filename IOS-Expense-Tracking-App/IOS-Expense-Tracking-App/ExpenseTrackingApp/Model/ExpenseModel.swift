@@ -9,11 +9,11 @@ import Foundation
 
 struct Expense: Codable, Hashable {
     let _id: String
-    let expenseTitle: String
+    let transTitle: String
     let description: String
+    let amount: Int
+    let transType: String
     let category: Category
-    let type: String
-    let transDate: Date
-    let amount: Double
     let location: String
+    let transDate: String
 }

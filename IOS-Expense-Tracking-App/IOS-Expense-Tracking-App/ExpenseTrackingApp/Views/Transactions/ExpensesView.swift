@@ -10,9 +10,8 @@ import SwiftUI
 struct ExpensesView: View {
     
     @ObservedObject private var viewModel = ExpenseViewModel()
-    @StateObject var expenseData = ExpenseViewModel()
     @State private var addExpense: Bool = false
-    @StateObject var categoryData = CategoryViewModel()
+    @StateObject var expenseData = ExpenseViewModel()
     
     var body: some View {
         NavigationView {
@@ -32,27 +31,80 @@ struct ExpensesView: View {
                             Image(systemName: "plus.circle.fill")
                                 .font(.title3)
                         }
-                        
-                        
+                    }
+                    
+                    VStack {
+                        if expenseData.isRefreshing {
+                            ProgressView()
+                        } else {
+                            if (expenseData.transactions.isEmpty) {
+                                VStack {
+                                    Image(systemName: "tray.fill")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 50, height: 50)
+                                    
+                                    Text("No Transaction Records")
+                                        .font(.title2)
+                                        .multilineTextAlignment(.center)
+                                }.padding(.top, 100)
+                            } else {
+                                ForEach(expenseData.transactions, id: \.self) { transaction in
+                                    HStack(spacing: 15) {
+                                        Image(transaction.transType == "Income" ? "Income" : "Expense")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fill)
+                                            .frame(width: 100, height: 100)
+                                        
+                                        VStack(alignment: .leading, spacing: 10) {
+                                            Text(transaction.transTitle)
+                                                .font(.title2)
+                                                .fontWeight(.semibold)
+                                            
+                                            Text(transaction.description)
+                                                .font(.headline)
+                                                .foregroundColor(.gray)
+                                                .fontWeight(.semibold)
+                                            
+                                            Text(transaction.location)
+                                                .fontWeight(.semibold)
+                                            
+                                            Text(transaction.transDate.split(separator: "T").first ?? "")
+                                                .foregroundColor(.gray)
+                                                .fontWeight(.semibold)
+                                            
+                                            Text("LKR. \(transaction.amount)")
+                                                .fontWeight(.semibold)
+                                            
+                                            HStack {
+                                                Capsule()
+                                                    .fill(Color.blue)
+                                                    .frame(height: 30)
+                                                    .overlay(Text(transaction.category.categoryTitle).bold().foregroundColor(Color.white))
+                                                
+                                                Capsule()
+                                                    .fill(transaction.transType == "Income" ? Color.green : Color.red)
+                                                    .frame(height: 30)
+                                                    .overlay(Text(transaction.transType).bold().foregroundColor(Color.white))
+                                            }
+                                        }
+                                        
+                                    }
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding()
+                                    .background(Color.gray.opacity(0.2))
+                                    .cornerRadius(10)
+                                    .padding(.horizontal, 4)
+                                    
+                                }
+                            }
+                            
+                        }
+                    }.onAppear{
+                        expenseData.fetchTransData()
                     }
                 }.padding()
                 
-                
-                VStack(spacing: 15) {
-                    
-                    HStack(spacing: 10) {
-                        Image(systemName: "magnifyingglass")
-                            .foregroundColor(.gray)
-                        
-                        TextField("Search Transaction", text: $expenseData.searchQuery)
-                    }
-                    .padding(.vertical, 10)
-                    .padding(.horizontal)
-                    .background(Color.white)
-                    .shadow(color: Color.black.opacity(0.06), radius: 5, x: 5, y: 5)
-                    .shadow(color: Color.black.opacity(0.06), radius: 5, x: -5, y: -5)
-                }
-                .padding()
             })
         }
         .sheet(isPresented: $addExpense) {
@@ -61,27 +113,6 @@ struct ExpensesView: View {
         }
     }
     
-    // Creating Grouped Transactions (Group By Date)
-    func createGroupedTransactions(_ transactions: [Expense]) {
-        Task.detached(priority: .high) {
-            let groupedDict = Dictionary(grouping: transactions) { expense in
-                let dateComponents = Calendar.current.dateComponents([.day, .month, .year], from: expense.transDate)
-                
-                return dateComponents
-            }
-            
-            // Sorting Dictionary in Descending Order
-            let sortedDict = groupedDict.sorted {
-                let calendar = Calendar.current
-                let date1 = calendar.date(from: $0.key) ?? .init()
-                let date2 = calendar.date(from: $1.key) ?? .init()
-                
-                return calendar.compare(date1, to: date2, toGranularity: .day) == .orderedDescending
-            }
-            
-            // Adding to the 
-        }
-    }
 }
 
 struct ExpensesView_Previews: PreviewProvider {

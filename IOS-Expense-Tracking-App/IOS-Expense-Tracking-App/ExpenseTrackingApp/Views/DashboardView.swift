@@ -21,7 +21,7 @@ struct DashboardView: View {
                         Text("Welcome")
                             .font(.title.bold())
                         
-                        Text("daily sales and analytics")
+                        Text("Track your income and expenses")
                             .fontWeight(.semibold)
                             .foregroundColor(.gray)
                     }

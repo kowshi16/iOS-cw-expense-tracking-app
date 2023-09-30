@@ -29,7 +29,7 @@ struct DashboardBaseView: View {
                     Text("Transactions")
                 }
             
-            Text("Reports")
+            ReportView()
                 .tabItem{
                     Image(systemName: "chart.bar")
                     Text("Reports")
