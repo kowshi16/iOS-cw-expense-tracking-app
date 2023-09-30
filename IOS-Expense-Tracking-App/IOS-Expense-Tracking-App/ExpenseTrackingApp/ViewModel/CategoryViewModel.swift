@@ -74,6 +74,7 @@ class CategoryViewModel: ObservableObject {
         let body: [String: AnyHashable] = [
             "categoryTitle": categoryTitle
         ]
+        print("body >>>>>>>>>", body)
         request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
         
         // Make the request

@@ -12,6 +12,7 @@ struct ExpensesView: View {
     @ObservedObject private var viewModel = ExpenseViewModel()
     @State private var addExpense: Bool = false
     @StateObject var expenseData = ExpenseViewModel()
+    @State private var addBudget: Bool = false
     
     var body: some View {
         NavigationView {
@@ -24,6 +25,10 @@ struct ExpensesView: View {
                                 .font(.title.bold())
                         }
                         Spacer(minLength: 10)
+                        
+                        Button("Add Budget") {
+                            addBudget.toggle()
+                        }.buttonStyle(.borderedProminent)
                         
                         Button {
                             addExpense.toggle()
@@ -109,6 +114,10 @@ struct ExpensesView: View {
         }
         .sheet(isPresented: $addExpense) {
             AddExpenseView()
+                .interactiveDismissDisabled()
+        }
+        .sheet(isPresented: $addBudget) {
+            AddBudgetView()
                 .interactiveDismissDisabled()
         }
     }

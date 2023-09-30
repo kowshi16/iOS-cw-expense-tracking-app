@@ -1,5 +1,5 @@
 //
-//  AddExpenseView.swift
+//  AddBudgetView.swift
 //  IOS-Expense-Tracking-App
 //
 //  Created by Kowshi on 30/09/2023.
@@ -7,33 +7,38 @@
 
 import SwiftUI
 
-struct AddExpenseView: View {
+struct AddBudgetView: View {
     
-    @Environment(\.dismiss) private var dismiss
-    private let options = ["Income", "Expense"]
-    
-    @State private var expenseTitle: String = ""
-    @State private var description: String = ""
-    @State private var transDate: Date = .init()
+    @State private var budgetTitle: String = ""
+    private let budgetType = ["Today", "This Week", "This Month"]
+    @State private var selectedOption = 0
     @State private var amount: CGFloat = 0
     @State private var category: Category?
-    @State private var location: String = ""
-    @State private var transType: String = ""
-    
-    @State private var selectedOption = 0
     @StateObject var allCategories = CategoryViewModel()
-    @StateObject var transData = ExpenseViewModel()
-    @State private var selectedCategory: Category?
+    @StateObject var budgetVM = BudgetViewModel()
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         NavigationStack {
             List {
                 Section("Title") {
-                    TextField("Enter the Title", text: $expenseTitle)
+                    TextField("Enter the Title", text: $budgetTitle)
                 }
                 
-                Section("Description") {
-                    TextField("Enter the Description", text: $description)
+                Section("Budget Period") {
+                    if !budgetType.isEmpty {
+                        HStack {
+                            Text("Select the Time Period")
+                            Spacer()
+                            Picker("", selection: $selectedOption) {
+                                ForEach(0..<budgetType.count, id: \.self) { index in
+                                    Text(budgetType[index])
+                                }
+                            }
+                            .pickerStyle(.menu)
+                            .labelsHidden()
+                        }
+                    }
                 }
                 
                 Section("Amount") {
@@ -43,22 +48,6 @@ struct AddExpenseView: View {
                     }
                     TextField("0.0", value: $amount, formatter: formatter)
                         .keyboardType(.numberPad)
-                }
-                
-                Section("Type") {
-                    if !options.isEmpty {
-                        HStack {
-                            Text("Select the Type")
-                            Spacer()
-                            Picker("", selection: $selectedOption) {
-                                ForEach(0..<options.count, id: \.self) { index in
-                                    Text(options[index])
-                                }
-                            }
-                            .pickerStyle(.menu)
-                            .labelsHidden()
-                        }
-                    }
                 }
                 
                 // Category Picker
@@ -73,7 +62,6 @@ struct AddExpenseView: View {
                                         self.category = category
                                     }
                                 }
-                                
                                 Button("None") {
                                     category = nil
                                 }
@@ -84,35 +72,24 @@ struct AddExpenseView: View {
                                     Text("None")
                                 }
                             }
-                            //                            Picker("", selection: $selectedCategory) {
-                            //                                ForEach(allCategories.categories, id: \.self) { category in
-                            //                                    Text(category.categoryTitle).tag(category)
-                            //                                }
-                            //                            }
-                            //                            .pickerStyle(.menu)
-                            //                            .labelsHidden()
+                        }
+                    } else {
+                        HStack {
+                            Text("Select the Category")
+                            Spacer()
+                            Menu {
+                                
+                            } label: {
+                                ProgressView()
+                            }
                         }
                     }
                 }
-                
-                Section("Location") {
-                    TextField("Enter the Location", text: $location)
-                }
-                
-                Section("Date") {
-                    DatePicker(selection: $transDate, in: ...Date(), displayedComponents: .date) {
-                        Text("Select a date")
-                    }
-                    //                    DatePicker("", selection: $transDate, displayedComponents: [.date])
-                    //                        .datePickerStyle(.graphical)
-                    //                        .labelsHidden()
-                }
-                
             }
             .onAppear{
                 allCategories.fetchCategoryData()
             }
-            .navigationTitle("Add Expense")
+            .navigationTitle("Add Budget")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar{
                 // Cancel and Add Button
@@ -126,9 +103,13 @@ struct AddExpenseView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Add") {
                         
-                        // Add goes here
+                        let budgetType = selectedOption == 0 ? "Today" : selectedOption == 1 ? "This Week" : "This Month"
+                        
+                        
+                        budgetVM.addBudget(budgetTitle: budgetTitle, amount: Int(amount), category: category!, budgetType: budgetType)
                         
                         dismiss()
+                        
                     }
                     .disabled(isAddButtonDisabled)
                 }
@@ -138,9 +119,8 @@ struct AddExpenseView: View {
     
     // Disabling Add Button untill all data is entered
     var isAddButtonDisabled: Bool {
-        return expenseTitle.isEmpty || description.isEmpty || amount == .zero
+        return budgetTitle.isEmpty || category == nil || amount == .zero
     }
-    
     
     // Decimal Formatter
     var formatter: NumberFormatter {
@@ -149,10 +129,11 @@ struct AddExpenseView: View {
         formatter.maximumFractionDigits = 2
         return formatter
     }
+    
 }
 
-struct AddExpenseView_Previews: PreviewProvider {
+struct AddBudgetView_Previews: PreviewProvider {
     static var previews: some View {
-        AddExpenseView()
+        AddBudgetView()
     }
 }
