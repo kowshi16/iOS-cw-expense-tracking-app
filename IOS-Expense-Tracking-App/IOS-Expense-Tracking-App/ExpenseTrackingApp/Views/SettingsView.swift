@@ -14,6 +14,7 @@ struct SettingsView: View {
     @State private var userEmail: String?
     
     var body: some View {
+        
         ScrollView(.vertical, showsIndicators: false) {
             VStack(spacing: 18) {
                 HStack {
@@ -24,7 +25,7 @@ struct SettingsView: View {
                     Spacer(minLength: 10)
                 }
             }.padding()
-            
+
             NavigationView {
                 VStack {
                     List {
@@ -39,7 +40,7 @@ struct SettingsView: View {
                                 fetchUserEmail()
                             }
                         }
-                        
+
                         Section {
                             HStack{
                                 ZStack{

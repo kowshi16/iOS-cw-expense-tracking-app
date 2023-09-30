@@ -14,6 +14,7 @@ class CategoryViewModel: ObservableObject {
     @Published var hasError = false
     @Published var error: CategoryError?
     @Published private(set) var isRefreshing = false
+    @Published var categoryTitle = ""
     
     func fetchCategoryData() {
         self.isRefreshing = true
@@ -55,6 +56,57 @@ class CategoryViewModel: ObservableObject {
         task.resume()
     }
     
+    func addCategory(newAddedValue: String) {
+        self.isRefreshing = true
+        self.hasError = false
+        categoryTitle = newAddedValue
+        guard let url = URL(string: "https://expense-tracking-j7tf.onrender.com/category/create") else {
+            return
+        }
+        
+        print("Making API Call.......")
+        
+        var request = URLRequest(url: url)
+        
+        request.httpMethod = "POST"
+        request.timeoutInterval = 20
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        let body: [String: AnyHashable] = [
+            "categoryTitle": categoryTitle
+        ]
+        request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
+        
+        // Make the request
+        let task = URLSession.shared.dataTask(with: request) { data, _, error in
+            guard let data = data, error == nil else {
+                return
+            }
+            
+            DispatchQueue.global().async {
+                if let error = error {
+                    self.hasError = true
+                    self.error = CategoryError.custom(error: error)
+                }
+                
+                do {
+                    let response = try JSONDecoder().decode(Response.self, from: data)
+                    print("SUCCESS", response)
+                    self.isRefreshing = true
+                }
+                catch {
+                    print(error)
+                }
+                
+                DispatchQueue.main.async {
+                    self.isRefreshing = false
+                }
+            }
+            
+           
+        }
+        task.resume()
+    }
+    
     
     //    @Published var categories = [Category]()
     //
@@ -73,6 +125,10 @@ class CategoryViewModel: ObservableObject {
     //            }
     //        }
     //    }
+}
+
+struct Response: Codable {
+    let message: String
 }
 
 extension CategoryViewModel {

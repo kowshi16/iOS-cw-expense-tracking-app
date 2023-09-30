@@ -10,6 +10,7 @@ import SwiftUI
 struct AddExpenseView: View {
     
     @Environment(\.dismiss) private var dismiss
+    private let options = ["Income", "Expense"]
     
     @State private var expenseTitle: String = ""
     @State private var description: String = ""
@@ -17,12 +18,11 @@ struct AddExpenseView: View {
     @State private var amount: CGFloat = 0
     @State private var category: Category?
     @State private var location: String = ""
+    @State private var transType: String = ""
     
     @State private var selectedOption = 0
     @StateObject var allCategories = CategoryViewModel()
     @State private var selectedCategory: Category?
-    
-    private let options = ["Income", "Expense"]
     
     var body: some View {
         NavigationStack {
@@ -66,13 +66,30 @@ struct AddExpenseView: View {
                         HStack {
                             Text("Select the Category")
                             Spacer()
-                            Picker("", selection: $selectedCategory) {
+                            Menu {
                                 ForEach(allCategories.categories, id: \.self) { category in
-                                    Text(category.categoryTitle).tag(category)
+                                    Button(category.categoryTitle) {
+                                        self.category = category
+                                    }
+                                }
+                                
+                                Button("None") {
+                                    category = nil
+                                }
+                            } label: {
+                                if let categoryName = category?.categoryTitle {
+                                    Text(categoryName)
+                                } else {
+                                    Text("None")
                                 }
                             }
-                            .pickerStyle(.menu)
-                            .labelsHidden()
+                            //                            Picker("", selection: $selectedCategory) {
+                            //                                ForEach(allCategories.categories, id: \.self) { category in
+                            //                                    Text(category.categoryTitle).tag(category)
+                            //                                }
+                            //                            }
+                            //                            .pickerStyle(.menu)
+                            //                            .labelsHidden()
                         }
                     }
                 }
@@ -95,7 +112,7 @@ struct AddExpenseView: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar{
                 // Cancel and Add Button
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .navigationBarLeading) {
                     Button("Cancel") {
                         dismiss()
                     }

@@ -17,7 +17,8 @@ struct CategoryView: View {
     @State private var deleteRequest: Bool = false
     @State private var isSwipeGestureActive = false
     
-    @State private var categoryTitle = ""
+    @State private var categoryTitle: String = ""
+    @ObservedObject private var categoryViewModel = CategoryViewModel()
     
     var body: some View {
         
@@ -57,7 +58,7 @@ struct CategoryView: View {
                             } else {
                                 ForEach(categoryData.categories, id: \.self) { category in
                                     HStack {
-                                        Image(systemName: "building.columns")
+                                        Image(systemName: "tag.fill")
                                             .foregroundColor(.blue)
                                         Text(category.categoryTitle)
                                             .font(.headline)
@@ -81,35 +82,42 @@ struct CategoryView: View {
         .sheet(isPresented: $addCategory) {
             categoryTitle = ""
         } content: {
-            NavigationStack {
-                List {
-                    Section("Category Name") {
-                        TextField("Enter Category Name", text: $categoryTitle)
+            if categoryData.isRefreshing {
+                ProgressView()
+            } else {
+                NavigationStack {
+                    List {
+                        Section("Category Name") {
+                            TextField("Enter Category Name", text: $categoryTitle)
+                        }
+                    }
+                    .navigationTitle("Category Name")
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            Button("Cancel") {
+                                addCategory = false
+                            }
+                            .tint(.red)
+                        }
+                        
+                        ToolbarItem(placement: .navigationBarTrailing) {
+                            Button("Add") {
+                                //let category = Category(categoryTitle: categoryTitle)
+                                if (categoryTitle != "") {
+                                    categoryData.addCategory(newAddedValue: categoryTitle)
+                                }
+                                categoryTitle = ""
+                                addCategory = false
+                            }
+                            .disabled(categoryTitle.isEmpty)
+                        }
                     }
                 }
-                .navigationTitle("Category Name")
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarLeading) {
-                        Button("Cancel") {
-                            addCategory = false
-                        }
-                        .tint(.red)
-                    }
-                    
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Button("Add") {
-                            //let category = Category(categoryTitle: categoryTitle)
-                            categoryTitle = ""
-                            addCategory = false
-                        }
-                        .disabled(categoryTitle.isEmpty)
-                    }
-                }
+                .presentationDetents([.height(180)])
+                .presentationCornerRadius(20)
+                .interactiveDismissDisabled()
             }
-            .presentationDetents([.height(180)])
-            .presentationCornerRadius(20)
-            .interactiveDismissDisabled()
         }
     }
 }

@@ -137,6 +137,8 @@
 		452B43E62AADC94100CFE5EC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				457E35242AC78F6700E09908 /* Transactions */,
+				457E35232AC78F3D00E09908 /* Category */,
 				452B43E72AADC96700CFE5EC /* HomeView.swift */,
 				452B43EB2AADC9D400CFE5EC /* LoginView.swift */,
 				452B43ED2AADFDDC00CFE5EC /* SignUpView.swift */,
@@ -146,9 +148,6 @@
 				45BA87A42ABEE51C00E4D225 /* DashboardBaseView.swift */,
 				45BA87A62ABEE55D00E4D225 /* GraphView.swift */,
 				45BA87A82ABEF30500E4D225 /* SettingsView.swift */,
-				45BA87AD2ABF772900E4D225 /* ExpensesView.swift */,
-				45BA87AF2ABF77AF00E4D225 /* CategoryView.swift */,
-				457E35212AC763EB00E09908 /* AddExpenseView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -158,6 +157,23 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		457E35232AC78F3D00E09908 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				45BA87AF2ABF77AF00E4D225 /* CategoryView.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		457E35242AC78F6700E09908 /* Transactions */ = {
+			isa = PBXGroup;
+			children = (
+				45BA87AD2ABF772900E4D225 /* ExpensesView.swift */,
+				457E35212AC763EB00E09908 /* AddExpenseView.swift */,
+			);
+			path = Transactions;
 			sourceTree = "<group>";
 		};
 		45BA87AA2ABF187500E4D225 /* ViewModel */ = {
