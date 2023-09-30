@@ -6,43 +6,50 @@
 //
 
 import SwiftUI
-import Charts
 
 struct ReportView: View {
-    
-    @State private var graphType: GraphType = .category
+    @State private var graphType: GraphType = .income
     
     var body: some View {
         NavigationView {
-            VStack(spacing: 18) {
+            VStack(alignment: .leading, spacing: 10) {
                 HStack {
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("Reports")
-                            .font(.title.bold())
-                    }
-                    Spacer(minLength: 10)
+                    Text("Reports")
+                        .font(.title.bold())
+                        .padding(.top, 10)
+                        .padding(.leading, 20)
+                        .padding(.bottom, 10)
+                    
+                    Spacer()
                 }
                 
-                VStack {
-                    Picker("", selection: $graphType) {
-                        ForEach(GraphType.allCases, id: \.rawValue) { type in
-                            Text(type.rawValue)
-                                .tag(type)
-                        }
+                Picker("", selection: $graphType) {
+                    ForEach(GraphType.allCases, id: \.rawValue) { type in
+                        Text(type.rawValue)
+                            .tag(type)
                     }
-                    .pickerStyle(.segmented)
-                    .labelsHidden()
-                    
-                    // Charts
-                    
-                    
-                    Spacer(minLength: 0)
+                }
+                .pickerStyle(.segmented)
+                .labelsHidden()
+                .padding(.horizontal)
+                
+                Spacer()
+                
+                Group {
+                    if graphType == .category {
+                        CategoryReport()
+                    } else if graphType == .expense {
+                        ExpenseReport()
+                    } else if graphType == .income {
+                        IncomeReport()
+                    } else if graphType == .savings {
+                        SavingsReport()
+                    }
                 }
                 .padding()
-                
-            }.padding()
-            
-            
+            }
+            .navigationBarTitle("", displayMode: .inline)
+            .padding()
         }
     }
 }

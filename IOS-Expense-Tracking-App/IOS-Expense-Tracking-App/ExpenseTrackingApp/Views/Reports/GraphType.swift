@@ -8,8 +8,8 @@
 import SwiftUI
 
 enum GraphType: String, CaseIterable {
-    case category = "Category"
     case income = "Income"
     case expense = "Expenses"
+    case category = "Category"
     case savings = "Savings"
 }

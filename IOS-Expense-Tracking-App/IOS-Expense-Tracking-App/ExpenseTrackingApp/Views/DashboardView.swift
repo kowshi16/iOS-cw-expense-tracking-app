@@ -11,11 +11,12 @@ import FirebaseAuth
 
 struct DashboardView: View {
     
+    @StateObject var viewModel = DashboardViewModel()
+
     var body: some View {
-        // MARK: HOME VIEW
+        
         ScrollView(.vertical, showsIndicators: false) {
             VStack(spacing: 18) {
-                // MARK: TITLE
                 HStack {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Welcome")
@@ -51,25 +52,25 @@ struct DashboardView: View {
                             .background(Color("BG"))
                             .clipShape(Circle())
                     } // NOTIFICATION END
-                } // TITLE END
+                }
                 
-                // MARK: - ORDER VIEW
                 HStack(spacing: 0) {
-                    OrderProgress(title: "This month expense", color: Color("chartColor2"), image: "cart.badge.plus", progress: 68)
+                    OrderProgress(title: "Total Category Count",
+                                  color: Color("chartColor2"),
+                                  image: "cart.badge.plus",
+                                  progress: viewModel.categoryCount ?? 0)
                     
-                    OrderProgress(title: "This month income", color: Color("roundColor"), image: "clock.badge.checkmark", progress: 72)
-                } // USER VIEW END
+                    OrderProgress(title: "Total Transaction Count", color: Color("roundColor"), image: "clock.badge.checkmark", progress: viewModel.transactionCount ?? 0)
+                    
+                }
                 .padding()
                 .background(Color("BG"))
                 .cornerRadius(18)
                 .padding(.bottom, -25)
                 
-                // MARK: GRAPH VIEW
                 GraphView(sales: sales)
                 
-                // MARK: - TOP SELLING PRODUCT
                 VStack {
-                    // MARK: SECTION TITLE
                     HStack {
                         Text("Savings")
                             .font(.callout.bold())
@@ -89,9 +90,8 @@ struct DashboardView: View {
                                 .frame(width: 20, height: 20)
                                 .foregroundColor(.primary)
                         }
-                    } // SECTION TITLE
+                    }
                     
-                    // MARK: PRODUCT LIST
                     HStack(spacing: 15) {
                         Image(systemName: "bag.fill")
                             .font(.title2)
@@ -104,11 +104,17 @@ struct DashboardView: View {
                             )
                         
                         VStack(alignment: .leading, spacing: 8) {
-                            Text("Party")
+                            Text("Total Budget for this month")
                                 .fontWeight(.bold)
-                            Text("1230 Sales")
-                                .font(.caption2.bold())
-                                .foregroundColor(.gray)
+                            if let totalBudget = viewModel.totalBudget {
+                                Text("LKR. \(totalBudget)")
+                                    .font(.caption2.bold())
+                                    .foregroundColor(.gray)
+                            } else {
+                                Text("LKR. 0")
+                                    .font(.caption2.bold())
+                                    .foregroundColor(.gray)
+                            }
                         }
                         
                         Spacer()
@@ -122,16 +128,23 @@ struct DashboardView: View {
                 .background(Color("BG"))
                 .cornerRadius(18)
                 
+            }.onAppear{
+                viewModel.getCategoryCount()
+            }
+            .onAppear{
+                viewModel.getTranactionCount()
+            }
+            .onAppear{
+                viewModel.getTotalBudget()
             }
             .padding()
         }
     }
     
     
-    
-    // MARK: USER PROGRESS VIEW
+
     @ViewBuilder
-    func OrderProgress(title: String, color: Color, image: String, progress: CGFloat)->some View {
+    func OrderProgress(title: String, color: Color, image: String, progress: Int)->some View {
         HStack {
             Image(systemName: image)
                 .font(.title2)
@@ -143,7 +156,7 @@ struct DashboardView: View {
                             .stroke(Color.gray.opacity(0.3), lineWidth: 2)
                         
                         Circle()
-                            .trim(from: 0, to: progress / 100)
+                            .trim(from: 0, to: CGFloat(progress / 100))
                             .stroke(color, lineWidth: 2)
                     }
                 )

@@ -97,7 +97,7 @@ struct ExpensesView: View {
                                         
                                         HStack {
                                             Button {
-                                                //addExpense.toggle()
+                                                expenseData.deleteTransaction(transactionId: transaction._id)
                                             } label: {
                                                 Image(systemName: "trash.fill").foregroundColor(Color.red)
                                             }

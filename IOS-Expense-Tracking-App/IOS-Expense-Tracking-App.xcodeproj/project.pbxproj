@@ -27,6 +27,15 @@
 		457E35272AC8196900E09908 /* ReportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457E35262AC8196900E09908 /* ReportView.swift */; };
 		457E35292AC819DB00E09908 /* GraphType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457E35282AC819DB00E09908 /* GraphType.swift */; };
 		457E352B2AC86DB800E09908 /* TransactionPayload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 457E352A2AC86DB800E09908 /* TransactionPayload.swift */; };
+		458001D82AD5F0450002786E /* DashboardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458001D72AD5F0450002786E /* DashboardViewModel.swift */; };
+		458001DA2AD5F2220002786E /* DashboardModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458001D92AD5F2220002786E /* DashboardModel.swift */; };
+		458001DC2AD636670002786E /* ReportsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458001DB2AD636670002786E /* ReportsModel.swift */; };
+		458001DE2AD637190002786E /* ReportsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458001DD2AD637190002786E /* ReportsViewModel.swift */; };
+		458001E02AD63AE20002786E /* CategoryReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458001DF2AD63AE20002786E /* CategoryReport.swift */; };
+		458001E22AD63B1B0002786E /* ExpenseReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458001E12AD63B1B0002786E /* ExpenseReport.swift */; };
+		458001E42AD63B4C0002786E /* IncomeReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458001E32AD63B4C0002786E /* IncomeReport.swift */; };
+		458001E62AD63B830002786E /* SavingsReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 458001E52AD63B830002786E /* SavingsReport.swift */; };
+		458001EA2AD691BA0002786E /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 458001E92AD691BA0002786E /* SwiftUICharts */; };
 		4580F0B22AC98517000DF73F /* AddBudgetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4580F0B12AC98517000DF73F /* AddBudgetView.swift */; };
 		4580F0B42AC98948000DF73F /* BudgetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4580F0B32AC98948000DF73F /* BudgetViewModel.swift */; };
 		4580F0B62AC9899E000DF73F /* BudgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4580F0B52AC9899E000DF73F /* BudgetModel.swift */; };
@@ -62,6 +71,15 @@
 		457E35262AC8196900E09908 /* ReportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportView.swift; sourceTree = "<group>"; };
 		457E35282AC819DB00E09908 /* GraphType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphType.swift; sourceTree = "<group>"; };
 		457E352A2AC86DB800E09908 /* TransactionPayload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionPayload.swift; sourceTree = "<group>"; };
+		458001D72AD5F0450002786E /* DashboardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewModel.swift; sourceTree = "<group>"; };
+		458001D92AD5F2220002786E /* DashboardModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardModel.swift; sourceTree = "<group>"; };
+		458001DB2AD636670002786E /* ReportsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsModel.swift; sourceTree = "<group>"; };
+		458001DD2AD637190002786E /* ReportsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportsViewModel.swift; sourceTree = "<group>"; };
+		458001DF2AD63AE20002786E /* CategoryReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryReport.swift; sourceTree = "<group>"; };
+		458001E12AD63B1B0002786E /* ExpenseReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseReport.swift; sourceTree = "<group>"; };
+		458001E32AD63B4C0002786E /* IncomeReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeReport.swift; sourceTree = "<group>"; };
+		458001E52AD63B830002786E /* SavingsReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingsReport.swift; sourceTree = "<group>"; };
+		458001E72AD6905C0002786E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4580F0B12AC98517000DF73F /* AddBudgetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddBudgetView.swift; sourceTree = "<group>"; };
 		4580F0B32AC98948000DF73F /* BudgetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewModel.swift; sourceTree = "<group>"; };
 		4580F0B52AC9899E000DF73F /* BudgetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetModel.swift; sourceTree = "<group>"; };
@@ -85,6 +103,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				457B9B0A2AB6059300762105 /* FirebaseDatabase in Frameworks */,
+				458001EA2AD691BA0002786E /* SwiftUICharts in Frameworks */,
 				457B9B112AB625BB00762105 /* FirebaseAuth in Frameworks */,
 				457B9B0C2AB6059300762105 /* FirebaseFirestoreCombine-Community in Frameworks */,
 				457B9B082AB6059300762105 /* FirebaseAnalyticsSwift in Frameworks */,
@@ -117,6 +136,7 @@
 		452B43D52AADBDCE00CFE5EC /* IOS-Expense-Tracking-App */ = {
 			isa = PBXGroup;
 			children = (
+				458001E72AD6905C0002786E /* Info.plist */,
 				457B9B032AB5F6D000762105 /* GoogleService-Info.plist */,
 				452B43E52AADBE6000CFE5EC /* ExpenseTrackingApp */,
 				452B43D62AADBDCE00CFE5EC /* IOS_Expense_Tracking_AppApp.swift */,
@@ -195,6 +215,10 @@
 			children = (
 				457E35262AC8196900E09908 /* ReportView.swift */,
 				457E35282AC819DB00E09908 /* GraphType.swift */,
+				458001DF2AD63AE20002786E /* CategoryReport.swift */,
+				458001E12AD63B1B0002786E /* ExpenseReport.swift */,
+				458001E32AD63B4C0002786E /* IncomeReport.swift */,
+				458001E52AD63B830002786E /* SavingsReport.swift */,
 			);
 			path = Reports;
 			sourceTree = "<group>";
@@ -214,6 +238,8 @@
 				45BA87B32AC0718000E4D225 /* CategoryViewModel.swift */,
 				45BA87B72AC0B71600E4D225 /* ExpenseViewModel.swift */,
 				4580F0B32AC98948000DF73F /* BudgetViewModel.swift */,
+				458001D72AD5F0450002786E /* DashboardViewModel.swift */,
+				458001DD2AD637190002786E /* ReportsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -226,6 +252,8 @@
 				45BA87B52AC0A3C500E4D225 /* ExpenseModel.swift */,
 				457E352A2AC86DB800E09908 /* TransactionPayload.swift */,
 				4580F0B52AC9899E000DF73F /* BudgetModel.swift */,
+				458001D92AD5F2220002786E /* DashboardModel.swift */,
+				458001DB2AD636670002786E /* ReportsModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -253,6 +281,7 @@
 				457B9B0B2AB6059300762105 /* FirebaseFirestoreCombine-Community */,
 				457B9B0D2AB6059300762105 /* FirebaseStorage */,
 				457B9B102AB625BB00762105 /* FirebaseAuth */,
+				458001E92AD691BA0002786E /* SwiftUICharts */,
 			);
 			productName = "IOS-Expense-Tracking-App";
 			productReference = 452B43D32AADBDCE00CFE5EC /* IOS-Expense-Tracking-App.app */;
@@ -284,6 +313,7 @@
 			mainGroup = 452B43CA2AADBDCE00CFE5EC;
 			packageReferences = (
 				457B9B042AB6059300762105 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				458001E82AD691BA0002786E /* XCRemoteSwiftPackageReference "chartview" */,
 			);
 			productRefGroup = 452B43D42AADBDCE00CFE5EC /* Products */;
 			projectDirPath = "";
@@ -312,15 +342,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				458001DA2AD5F2220002786E /* DashboardModel.swift in Sources */,
 				457E352B2AC86DB800E09908 /* TransactionPayload.swift in Sources */,
+				458001E22AD63B1B0002786E /* ExpenseReport.swift in Sources */,
 				452B43E82AADC96700CFE5EC /* HomeView.swift in Sources */,
 				45BA87B82AC0B71600E4D225 /* ExpenseViewModel.swift in Sources */,
+				458001E42AD63B4C0002786E /* IncomeReport.swift in Sources */,
+				458001D82AD5F0450002786E /* DashboardViewModel.swift in Sources */,
 				457B9B002AB5CB1F00762105 /* ErrorView.swift in Sources */,
 				452B43D92AADBDCE00CFE5EC /* ContentView.swift in Sources */,
 				4580F0B22AC98517000DF73F /* AddBudgetView.swift in Sources */,
 				457E35292AC819DB00E09908 /* GraphType.swift in Sources */,
 				45BA87A72ABEE55D00E4D225 /* GraphView.swift in Sources */,
 				452B43EC2AADC9D400CFE5EC /* LoginView.swift in Sources */,
+				458001E62AD63B830002786E /* SavingsReport.swift in Sources */,
 				45DEA4CF2AB7E53100AEB8C4 /* DashboardView.swift in Sources */,
 				452B43D72AADBDCE00CFE5EC /* IOS_Expense_Tracking_AppApp.swift in Sources */,
 				45BA87B22AC0599000E4D225 /* CategoryModel.swift in Sources */,
@@ -328,12 +363,15 @@
 				45BA87B02ABF77AF00E4D225 /* CategoryView.swift in Sources */,
 				457E35272AC8196900E09908 /* ReportView.swift in Sources */,
 				45BA87A52ABEE51C00E4D225 /* DashboardBaseView.swift in Sources */,
+				458001DE2AD637190002786E /* ReportsViewModel.swift in Sources */,
 				45BA87A92ABEF30500E4D225 /* SettingsView.swift in Sources */,
 				45BA87B42AC0718000E4D225 /* CategoryViewModel.swift in Sources */,
 				45DEA4CD2AB7E4DB00AEB8C4 /* Sales.swift in Sources */,
 				457B9B132AB62AC400762105 /* Homescreen.swift in Sources */,
+				458001DC2AD636670002786E /* ReportsModel.swift in Sources */,
 				4580F0B42AC98948000DF73F /* BudgetViewModel.swift in Sources */,
 				45BA87B62AC0A3C500E4D225 /* ExpenseModel.swift in Sources */,
+				458001E02AD63AE20002786E /* CategoryReport.swift in Sources */,
 				4580F0B62AC9899E000DF73F /* BudgetModel.swift in Sources */,
 				457E35222AC763EB00E09908 /* AddExpenseView.swift in Sources */,
 				45BA87AE2ABF772900E4D225 /* ExpensesView.swift in Sources */,
@@ -464,6 +502,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"IOS-Expense-Tracking-App/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "IOS-Expense-Tracking-App/Info.plist";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -500,6 +539,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"IOS-Expense-Tracking-App/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "IOS-Expense-Tracking-App/Info.plist";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -557,6 +597,14 @@
 				minimumVersion = 10.0.0;
 			};
 		};
+		458001E82AD691BA0002786E /* XCRemoteSwiftPackageReference "chartview" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apppear/chartview.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -589,6 +637,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 457B9B042AB6059300762105 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
+		};
+		458001E92AD691BA0002786E /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 458001E82AD691BA0002786E /* XCRemoteSwiftPackageReference "chartview" */;
+			productName = SwiftUICharts;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

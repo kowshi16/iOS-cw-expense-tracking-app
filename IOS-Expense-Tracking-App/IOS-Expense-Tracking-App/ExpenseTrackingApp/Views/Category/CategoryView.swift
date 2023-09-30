@@ -62,6 +62,15 @@ struct CategoryView: View {
                                             .foregroundColor(.blue)
                                         Text(category.categoryTitle)
                                             .font(.headline)
+                                        
+                                        Spacer()
+                                        
+                                        Button {
+                                            categoryData.deleteCategory(categoryId: category._id)
+                                        } label: {
+                                            Image(systemName: "trash.fill").foregroundColor(Color.red)
+                                        }
+                                        
                                     }
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .padding()
