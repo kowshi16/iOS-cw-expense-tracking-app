@@ -81,6 +81,7 @@ struct ExpensesView: View {
                                             Text("LKR. \(transaction.amount)")
                                                 .fontWeight(.semibold)
                                             
+                                            
                                             HStack {
                                                 Capsule()
                                                     .fill(Color.blue)
@@ -94,12 +95,22 @@ struct ExpensesView: View {
                                             }
                                         }
                                         
+                                        HStack {
+                                            Button {
+                                                //addExpense.toggle()
+                                            } label: {
+                                                Image(systemName: "trash.fill").foregroundColor(Color.red)
+                                            }
+                                        }
+                                        
                                     }
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                     .padding()
                                     .background(Color.gray.opacity(0.2))
                                     .cornerRadius(10)
                                     .padding(.horizontal, 4)
+                                    
+                                    
                                     
                                 }
                             }

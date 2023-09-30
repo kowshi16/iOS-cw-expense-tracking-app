@@ -89,7 +89,7 @@ struct SignUpView: View {
                         Button(action: {
                             self.register()
                         }) {
-                            Text("Sign In")
+                            Text("Sign Up")
                                 .foregroundColor(.white)
                                 .padding(.vertical)
                                 .frame(width: UIScreen.main.bounds.width - 50)

@@ -56,22 +56,19 @@ struct CategoryView: View {
                                         .multilineTextAlignment(.center)
                                 }.padding(.top, 100)
                             } else {
-                                List {
-                                    ForEach(categoryData.categories, id: \.self) { category in
-                                        HStack {
-                                            Image(systemName: "tag.fill")
-                                                .foregroundColor(.blue)
-                                            Text(category.categoryTitle)
-                                                .font(.headline)
-                                        }
-                                        .frame(maxWidth: .infinity, alignment: .leading)
-                                        .padding()
-                                        .background(Color.gray.opacity(0.2))
-                                        .cornerRadius(10)
-                                        .padding(.horizontal, 4)
+                                ForEach(categoryData.categories, id: \.self) { category in
+                                    HStack {
+                                        Image(systemName: "tag.fill")
+                                            .foregroundColor(.blue)
+                                        Text(category.categoryTitle)
+                                            .font(.headline)
                                     }
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                                    .padding()
+                                    .background(Color.gray.opacity(0.2))
+                                    .cornerRadius(10)
+                                    .padding(.horizontal, 4)
                                 }
-                                
                                 
                             }
                                 

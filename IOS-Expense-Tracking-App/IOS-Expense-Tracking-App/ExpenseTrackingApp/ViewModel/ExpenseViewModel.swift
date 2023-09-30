@@ -14,7 +14,6 @@ class ExpenseViewModel: ObservableObject {
     @Published var hasError = false
     @Published var error: ExpenseError?
     @Published private(set) var isRefreshing = false
-    @Published var transactionPayload: TransactionPayload?
     
     func fetchTransData() {
         self.isRefreshing = true
@@ -58,15 +57,14 @@ class ExpenseViewModel: ObservableObject {
         
     }
     
-    func addTransaction(transPayload: TransactionPayload) {
+    func addTransaction(transTitle: String, description: String, amount: Int, transType: String, category: Category, location: String, transDate: String) {
         self.isRefreshing = true
         self.hasError = false
-        transactionPayload = transPayload
         guard let url = URL(string: "https://expense-tracking-j7tf.onrender.com/transaction/create") else {
             return
         }
         
-        print("Making API Call.......")
+        print("Making API Call For Transaction.......")
         
         var request = URLRequest(url: url)
         
@@ -74,13 +72,13 @@ class ExpenseViewModel: ObservableObject {
         request.timeoutInterval = 20
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         let body: [String: AnyHashable] = [
-            "transTitle": transactionPayload?.transTitle,
-            "description": transactionPayload?.description,
-            "amount": transactionPayload?.amount,
-            "transType": transactionPayload?.transType,
-            "category": transactionPayload?.category,
-            "location": transactionPayload?.location,
-            "transDate": transactionPayload?.transDate
+            "transTitle": transTitle,
+            "description": description,
+            "amount": amount,
+            "transType": transType,
+            "category": category._id,
+            "location": location,
+            "transDate": transDate
         ]
         request.httpBody = try? JSONSerialization.data(withJSONObject: body, options: .fragmentsAllowed)
         

@@ -126,7 +126,9 @@ struct AddExpenseView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Add") {
                         
-                        // Add goes here
+                        let transType = selectedOption == 0 ? "Income" : "Expense"
+                        
+                        transData.addTransaction(transTitle: expenseTitle, description: description, amount: Int(amount), transType: transType, category: category!, location: location, transDate: transDate.ISO8601Format())
                         
                         dismiss()
                     }
@@ -138,7 +140,7 @@ struct AddExpenseView: View {
     
     // Disabling Add Button untill all data is entered
     var isAddButtonDisabled: Bool {
-        return expenseTitle.isEmpty || description.isEmpty || amount == .zero
+        return expenseTitle.isEmpty || description.isEmpty || amount == .zero || category == nil
     }
     
     
