@@ -55,9 +55,9 @@ struct DashboardView: View {
                 
                 // MARK: - ORDER VIEW
                 HStack(spacing: 0) {
-                    OrderProgress(title: "New Order", color: Color("chartColor2"), image: "cart.badge.plus", progress: 68)
+                    OrderProgress(title: "This month expense", color: Color("chartColor2"), image: "cart.badge.plus", progress: 68)
                     
-                    OrderProgress(title: "Order Completed", color: Color("roundColor"), image: "clock.badge.checkmark", progress: 72)
+                    OrderProgress(title: "This month income", color: Color("roundColor"), image: "clock.badge.checkmark", progress: 72)
                 } // USER VIEW END
                 .padding()
                 .background(Color("BG"))
@@ -71,7 +71,7 @@ struct DashboardView: View {
                 VStack {
                     // MARK: SECTION TITLE
                     HStack {
-                        Text("Top Selling Products")
+                        Text("Savings")
                             .font(.callout.bold())
                         
                         Spacer()
@@ -104,7 +104,7 @@ struct DashboardView: View {
                             )
                         
                         VStack(alignment: .leading, spacing: 8) {
-                            Text("Party Bag")
+                            Text("Party")
                                 .fontWeight(.bold)
                             Text("1230 Sales")
                                 .font(.caption2.bold())

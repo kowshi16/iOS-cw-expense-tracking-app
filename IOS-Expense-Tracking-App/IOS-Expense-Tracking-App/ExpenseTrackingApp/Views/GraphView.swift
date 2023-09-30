@@ -14,7 +14,7 @@ struct GraphView: View {
         VStack(spacing: 20) {
             // MARK: GRAPH TITLE
             HStack {
-                Text("Total Sales")
+                Text("Total Income")
                     .fontWeight(.bold)
                 
                 Spacer()
@@ -42,7 +42,7 @@ struct GraphView: View {
                     .fill(Color("chartColor2"))
                     .frame(width: 20, height: 8)
                 
-                Text("Sales")
+                Text("Expenses")
                     .font(.system(size: 14, weight: .bold))
                     .foregroundColor(.gray)
             } // UNDERLINE END

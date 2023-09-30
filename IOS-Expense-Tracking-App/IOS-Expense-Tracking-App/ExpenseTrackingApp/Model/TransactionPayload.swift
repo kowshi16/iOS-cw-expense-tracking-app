@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct TransactionPayload: Codable, Hashable {
-    var transTitle: String
-    var description: String
-    var amount: Int
-    var transType: String
-    var category: Category
-    var location: String
-    var transDate: Date
+struct TransactionPayload: Encodable {
+    let transTitle: String
+    let description: String
+    let amount: Int
+    let transType: String
+    let category: Category?
+    let location: String
+    let transDate: Date
 }
